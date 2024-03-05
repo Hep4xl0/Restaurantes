@@ -23,9 +23,12 @@ def cadastrar_novo_restarante():
     clear_screen()
     print('cadastre um novo restaurante')
     nome_restaurante_novo = input('digite o nome do novo restaurante: ')
-    restaurantes.append(nome_restaurante_novo)
-    print(f'\nrestaurante {nome_restaurante_novo} foi cadastrado com sucesso\n')
-
+    categoria_restaurante_novo = input('digite a categoria do restaurante:')
+    print(f'\nA categoria do restaurante é {categoria_restaurante_novo}.')
+    dados_restaurante = {'nome':nome_restaurante_novo, 'categoria':categoria_restaurante_novo, 'status':False}
+    restaurantes.append(dados_restaurante)
+    print(f'resturante {nome_restaurante_novo} foi registrado com sucesso')
+    
 def mostrar_restaurantes():
     clear_screen()
         
@@ -36,27 +39,42 @@ def mostrar_restaurantes():
 print('desejar iniciar atendimento?')
 iniciar = str(input('sim/nao: ')).lower()
 
+def editar_restaurantes():
+    clear_screen()
+    
+    nome_restaurante = input('Digite o nome do restaurante que sera alterado')
+    restauranta_encontrado = False 
+    for restaurante in restaurantes:
+        if nome_restaurante == restaurante['nome']:
+            restauranta_encontrado =True
+            restaurante['status'] =not restaurante['status']
+            print(f'O restaurante {nome_restaurante} foi ativado com sucesso') if restaurante['status'] else print(f'O restaurante {nome_restaurante} foi desativado com sucesso')
+    print ('retornando')
+
+
+
+
+
 if iniciar == 'sim':
     while True:
         clear_screen()  
         print('''\n1.Criar novo restaurante:
     2.Listar restaurante
-    3.Deletar restaurantes
+    3.Deletar restaurantes (nao funcional temp)
+    4.Editar
               ''')
-        
         
         opcao = int(input('escolha opcao: '))
         
         match opcao:
             case 1:
-                print('\nadicionar restaurante\n')
                 cadastrar_novo_restarante()
             case 2:
-                print('\nmostrar restaurante\n')
                 mostrar_restaurantes()
             case 3:
-                print('\nvamos remover um restaurante\n')
                 deletar_restaurante()
+            case 4:
+                editar_restaurantes()
             case _:
                 print('invalido')
             

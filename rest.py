@@ -69,35 +69,37 @@ def editar_restaurantes():
         if not restauranta_encontrado:
             print('restaurante nao encontrado.\n')
         input('clique enter para continuar:')
+
 #############################################
 
-iniciar = inicio()
+def program():
+    iniciar = inicio()
 
-if iniciar == 'sim':
-    while True: 
-        clear_screen()
-        print('''    1.Criar novo restaurante:
+    if iniciar == 'sim':
+        while True: 
+            clear_screen()
+            print('''    1.Criar novo restaurante:
     2.Listar restaurante
     3.Deletar restaurantes (nao funcional temp)
     4.Ativar/Desativar
               ''')
         
-        opcao = int(input('\tescolha opcao: '))
+            opcao = int(input('\tescolha opcao: '))
         
-        match opcao:
-            case 1:
-                adicionar_restaurante()
-            case 2:
-                mostrar_restaurantes()
-            case 3:
-                deletar_restaurante()
-            case 4:
-                editar_restaurantes()
-            case _:
-                print('invalido')
+            match opcao:
+                case 1:
+                    adicionar_restaurante()
+                case 2:
+                    mostrar_restaurantes()
+                case 3:
+                    deletar_restaurante()
+                case 4:
+                    editar_restaurantes()
+                case _:
+                    print('invalido')
             
-else:
-    print('atendimento encerrado')
+    else:
+        print('atendimento encerrado')
     
     
 

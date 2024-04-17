@@ -1,3 +1,4 @@
+
 import os
 restaurantes = []
 
@@ -31,6 +32,7 @@ def mostrar_restaurantes():
     input('clique enter para proseguir\n')
 
 def adicionar_restaurante():
+    clear_screen()
     print('Inicio do cadastramento\n')
     nome = input('digite nome: ')
     categoria = input('digite categoria: ')
@@ -72,34 +74,7 @@ def editar_restaurantes():
 
 #############################################
 
-def program():
-    iniciar = inicio()
 
-    if iniciar == 'sim':
-        while True: 
-            clear_screen()
-            print('''    1.Criar novo restaurante:
-    2.Listar restaurante
-    3.Deletar restaurantes (nao funcional temp)
-    4.Ativar/Desativar
-              ''')
-        
-            opcao = int(input('\tescolha opcao: '))
-        
-            match opcao:
-                case 1:
-                    adicionar_restaurante()
-                case 2:
-                    mostrar_restaurantes()
-                case 3:
-                    deletar_restaurante()
-                case 4:
-                    editar_restaurantes()
-                case _:
-                    print('invalido')
-            
-    else:
-        print('atendimento encerrado')
     
     
 

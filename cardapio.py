@@ -87,4 +87,27 @@ def sair():
         input('clique para voltar: ')
     elif escolha == 'Não' or 'Nao' or 'não' or 'nao':
         menu()
+
+
+
+def retirada_item():
+    clear_screen()
+    print('Estes são os restaurantes disponíveis para filtrar os itens:')
+    for restaurante in restaurantes:
+        print(restaurante.nome)
+    restaurante_selecionado = input('Digite o nome do restaurante para filtrar os itens: ')
+    itens_filtrados = Filtro(restaurante_selecionado, restaurantes).filtro(cardapio)
+    print(f'Estes são os itens disponíveis no restaurante "{restaurante_selecionado}":')
+    for item in itens_filtrados: 
+        print(f'Nome: {item.nome} | Categoria {item.categoria} | Preço R${item.preco}')
+    restaurante_item_deletado =str(input('Digite nome do item a ser deletado: '))
+    try:     
+        restaurante_item_excluido = next(item for item in cardapio if item.nome == restaurante_item_deletado)
+        cardapio.remove(restaurante_item_excluido)
+        print(f"O item {restaurante_item_deletado} foi excluido")
+    except:
+        print('erro')
+
+    input('clique enter para processeguir')
+    
     
